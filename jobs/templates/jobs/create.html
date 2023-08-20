@@ -1,0 +1,27 @@
+{% extends 'account/home.html' %}
+
+{% block content %} 
+<div class="d-flex justify-content-center align-items center mx-auto w-100 mt-3 mb-3">
+    <div class="card border rounded-3 bg-dark w-50">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.title }}
+                {{ form.description }}
+                {{ form.location }}
+                {{ form.company_name }}
+                {{ form.company_description }}
+                {{ form.website }}
+                {{ form.salary }}
+        
+        
+                <input type="submit" value="POST" class="rounded-pill">
+            </form>
+
+        </div>
+    </div>
+
+</div>
+    
+
+{% endblock%}

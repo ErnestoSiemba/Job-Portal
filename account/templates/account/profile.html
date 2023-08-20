@@ -1,0 +1,44 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}  
+    <h1 class="display-5 text-muted">Hello, {{ user.get_full_name }}</h1>
+    <div class="d-flex justify-content-center align-items-center mx-auto mt-3">
+        <div class="card border rounded-3 bg-light shadow-lg w-50">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <p class="text-muted text-center">Profile Picture</p>
+                        <img src="{{ user.profile_picture.url }}" alt="pp" class="img-fluid rounded-pill">
+                        <a href="{%url 'home' %}" class="btn btn-outline-success mt-3"><i class="fa fa-step-backward" aria-hidden="true"></i> Back to Home</a>
+                    </div>
+                    <div class="col">
+                        <hr>
+                        <p class="text-bold">First Name: {{ user.first_name }}</p>
+                        <hr>
+                        <p>Last Name: {{ user.last_name }}</p>
+                        <hr>
+                        <p>Full Name: {{ user.get_full_name }}</p>
+                        <hr>
+                        <p>Username: {{ user.username }}</p>
+                        <hr>
+                        <p>Email: {{ user.email }}</p>
+                        <hr>
+                        <p>Gender: {{ user.gender }}</p>
+                        <hr>
+                        
+                    </div>
+                    <a href="{% url 'userprofile:profile-update' %}" class="btn btn-outline-success rounded-pill">Update Profile <i class="fa fa-step-forward" aria-hidden="true"></i></a>
+                    
+                    <!-- <input type="submit" value="Update Profile" class="btn btn-outline-success rounded-pill"> -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    {% else %}
+    <h1 class="text-muted display-5">Hello, stranger</h1>
+
+    {% endif %}
+{% endblock content %}

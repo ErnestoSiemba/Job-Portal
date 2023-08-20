@@ -1,0 +1,37 @@
+{% extends 'account/base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <p class="text-center display-5">User Profile Update</p>
+        <div class="d-flex justify-content-center align-items-center mx-auto mt-3 mb-3">
+            <div class="card border rounded-3 bg-success shadow-lg w-100">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-strong text-center display-6">Hello {{ user.get_full_name }}</p>
+                            <p class="text-strong text-center display-6">My Profile Picture</p>
+                            <img src="{{user.profile_picture.url}}" alt="pp" class="img-fluid rounded-pill">
+                            <a href="{%url 'profile' %}" class="btn btn-outline-info w-50 mt-3"><i class="fa fa-step-backward" aria-hidden="true"></i> BACK</a>
+                        </div>
+                        <div class="col">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form }}
+
+                                <input type="submit" value="UPDATE PROFILE" class="rounded-pill">
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    
+    {% else %}
+    <h1 class="text-center display-3">Hello, Stranger</h1>
+    {% endif %}
+
+{% endblock content %}

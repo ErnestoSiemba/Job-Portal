@@ -1,0 +1,69 @@
+{% extends 'account/base.html' %}
+{% block nav %}
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
+    <div class="container-fluid">
+        <i class="fa fa-linkedin text-primary w-10 my-3"></i>
+        <form class="d-flex ">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" > 
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+      <div class="collapse navbar-collapse show text-right me-5" id="navbarBasic">
+        <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home"></i> Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-users"></i> My Network</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'jobs:jobs' %}"><i class="fa fa-briefcase"></i> Jobs</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-comments"></i> Messaging</a>
+          </li>
+          
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-bell"></i> Notifications</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user"></i> Me
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><i class="fa fa-user-circle-o mx-3" aria-hidden="true"></i>{{ user.first_name }} {{ user.last_name }} </li>
+              <li><a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-address-card" aria-hidden="true"></i> View Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+        
+      </div>
+      
+    </div>
+  </nav>
+
+  
+
+{% endblock nav %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 border rounded-5 bg-light">
+            <p class="display-5">
+                You can check out all the latest jobs here.
+            </p>
+            <a href="{% url 'jobs:jobs' %}" class="btn btn-outline-primary rounded-pill mb-3 w-100">View Jobs</a>
+            <a href="{% url 'jobs:postjob' %}" class="btn btn-outline-primary w-100 mb-3 rounded-pill">Post Job</a>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+  </div>
+{% endblock%}
